@@ -1,14 +1,10 @@
 {
-	"name": "Boilerplate Component",
-	"version": "0.0.1",
-	"dependencies": {
-		"jquery": "lastest",
-		"underscore": "latest",
-		"backbone": "latest",
-		"requirejs": "latest",
-
-	    "qunit": "latest"
-	},
-
-	"main": "component.js"
+  "name": "backbone.quantified",
+  "version": "0.0.1",
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "underscore": "~1.5.1",
+    "qunit": "~1.12.0"
+  },
+  "main": "backbone.quantified.js"
 }
