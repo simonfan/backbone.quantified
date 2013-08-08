@@ -143,8 +143,10 @@ define(['backbone'], function(Backbone) {
 		 * Checks how many models of the given model are in.
 		 */
 		quantity: function(model) {
-			var id = typeof model === 'object' ? model.id : model;
-			return this.get(id).quantity();
+			var id = typeof model === 'object' ? model.id : model,
+				quantifiedModel = this.get(id);
+
+			return quantifiedModel ? quantifiedModel.quantity() : 0;
 		},
 	});
 	
