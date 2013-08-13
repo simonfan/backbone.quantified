@@ -24,7 +24,7 @@ define(['backbone'], function(Backbone) {
 		},
 
 		__crease: function(quantity) {
-			quantity = this.get('quantity') + quantity;
+			quantity += this.get('quantity');
 
 			this.set('quantity', quantity);
 
@@ -143,10 +143,19 @@ define(['backbone'], function(Backbone) {
 		 * Checks how many models of the given model are in.
 		 */
 		quantity: function(model) {
-			var id = typeof model === 'object' ? model.id : model,
-				quantifiedModel = this.get(id);
+			if (typeof model !== 'undefined') {
+				// model is set, get the quantity from the given model.
+				var id = typeof model === 'object' ? model.id : model,
+					quantifiedModel = this.get(id);
 
-			return quantifiedModel ? quantifiedModel.quantity() : 0;
+				return quantifiedModel ? quantifiedModel.quantity() : 0;
+			} else {
+				// model not set, get count of collection
+				// reduce models, start count at 0.
+				return this.reduce(function(memo, quantifiedModel) {
+					return memo + quantifiedModel.quantity();
+				}, 0);
+			}
 		},
 	});
 	

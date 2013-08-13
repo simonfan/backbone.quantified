@@ -2,6 +2,8 @@ define(['backbone.quantified'], function(Quantified) {
 
 return function() {
 	
+	module('quantified model')
+
 	test('.increase()', function() {
 		var model = new Quantified.Model();
 

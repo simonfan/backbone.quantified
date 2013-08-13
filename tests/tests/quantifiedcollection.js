@@ -63,5 +63,19 @@ return function() {
 		ok( !collection.get(4));
 	});
 
+
+	test('.quantity(), to get a count of total items in collection', function() {
+		var collection = new Quantified.Collection(),
+			watermelon = fruits.get(0),
+			banana = fruits.get(1),
+			apple = fruits.get(2);
+
+		collection.increase(banana);
+		collection.increase(apple, 6);
+		collection.increase(watermelon, 2);
+
+		equal(collection.quantity(), 1 + 6 + 2);
+	});
+
 }
 });
