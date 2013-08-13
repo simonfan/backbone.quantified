@@ -84,6 +84,9 @@ define(['backbone'], function(Backbone) {
 
 					// get the quantifiedItem again
 					quantifiedItem = this.get(id);
+
+					// set a reference to the original model
+					quantifiedItem.originalModel = model;
 				}
 
 				// the item is already in the collection, just increase its quantity
@@ -93,7 +96,7 @@ define(['backbone'], function(Backbone) {
 				 * Trigger an 'increase' event and pass the quantifiedItem model
 				 * and the quantity
 				 */
-				this.trigger('increase', quantifiedItem, quantifiedItem.quantity());
+				this.trigger('increase', quantifiedItem);
 			}
 
 			return this;
@@ -133,7 +136,7 @@ define(['backbone'], function(Backbone) {
 				}
 
 				// trigger 'remove-item'
-				this.trigger('decrease', quantifiedItem, quantifiedItem.quantity());
+				this.trigger('decrease', quantifiedItem);
 			}
 
 			return this;
